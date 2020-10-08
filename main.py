@@ -1,5 +1,20 @@
+import pathlib
 import emoji
 
-with open('emojitex.sty', mode='w') as fid:
+TEX_PACKAGE_FILENAME = 'emojitex.sty'
+TEX_PACKAGE_PREAMBLE = 'preamble.tex'
+
+
+preamble_contents = pathlib.Path(TEX_PACKAGE_PREAMBLE).read_text()
+
+with open(TEX_PACKAGE_FILENAME, mode='w') as fid:
+    fid.write(f'{preamble_contents}\n')
     for emoji_glyph in emoji.unicode_codes.EMOJI_UNICODE.values():
-        fid.write(f'{emoji_glyph}\n')
+        fid.write(
+            r'\newunicodechar{'
+            f'{emoji_glyph}'
+            r'}{{\NotoEmoji '
+            f'{emoji_glyph}'
+            r'}}'
+            '\n'
+        )

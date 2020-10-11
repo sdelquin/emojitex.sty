@@ -25,7 +25,8 @@ def build_package(emoji_glyph_max_length=1):
     return '\n'.join(buffer)
 
 
-print('Creating TeX package... ', end='')
-package = build_package()
-pathlib.Path(TEX_PACKAGE_FILENAME).write_text(package)
-print(f'✅ Done! => {TEX_PACKAGE_FILENAME}')
+if __name__ == '__main__':
+    print('Creating TeX package... ', end='')
+    package = build_package()
+    pathlib.Path(TEX_PACKAGE_FILENAME).write_text(package)
+    print(f'✅ Done! => {TEX_PACKAGE_FILENAME}')

@@ -40,6 +40,14 @@ through `lualatex input.tex` produces the following output:
 
 ![TeX Output](tex_output.png)
 
+## Limitations
+
+This package relies on [newunicodechar](https://ctan.math.illinois.edu/macros/latex/contrib/newunicodechar/newunicodechar.pdf) $\TeX$ package to define the [list of emojis](emojitex.sty). From its documentation:
+
+> "The first argument must consist of a single Unicode character"
+
+A lot of emojis are indeed single Unicode characters (**4 bytes**), but many others are multi Unicode characters (**multiple of 4 bytes**). That's why some of them are not produced property.
+
 ## Development
 
 The following snippet will produce (update) [emojitex.sty](emojitex.sty).
@@ -54,7 +62,7 @@ $ ./build.sh
 
 ### Update `emojitex.sty`
 
-This package relies on [emoji](https://pypi.org/project/emoji/) Python package. From time to time it would be fine to update the file [emojitex.sty](emojitex.sty) file (_possible new emojis_):
+This package relies on this [emoji Python package](https://github.com/carpedm20/emoji/). From time to time it would be fine to update the file [emojitex.sty](emojitex.sty) file (_possible new emojis_):
 
 ```console
 $ git clone git@github.com:sdelquin/emojitex.sty.git

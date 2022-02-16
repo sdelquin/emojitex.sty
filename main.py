@@ -1,15 +1,17 @@
 import pathlib
+
 import emoji
 
 TEX_PACKAGE_FILENAME = 'emojitex.sty'
 TEX_PACKAGE_PREAMBLE = 'preamble.tex'
+EMOJI_LANG = 'en'
 
 
 def build_package(emoji_glyph_max_length=1):
     buffer = []
     preamble_contents = pathlib.Path(TEX_PACKAGE_PREAMBLE).read_text()
     buffer.append(preamble_contents)
-    for emoji_name, emoji_glyph in emoji.unicode_codes.EMOJI_UNICODE.items():
+    for emoji_name, emoji_glyph in emoji.unicode_codes.EMOJI_UNICODE[EMOJI_LANG].items():
         emoji_name = emoji_name.strip(':')
         # newunicodechar only admits single Unicode character
         # https://ctan.math.illinois.edu/macros/latex/contrib/newunicodechar/newunicodechar.pdf
